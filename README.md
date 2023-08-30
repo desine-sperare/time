@@ -33,7 +33,7 @@ class Time
 
 `Time(const Time& time)` - Copy constructor.
 
-`Time()` - Empty constructor initialize time with 0.
+`Time()` - Empty constructor initialize _time as local time.
 
 ### Methods
 
