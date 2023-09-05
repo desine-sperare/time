@@ -32,14 +32,21 @@ namespace timlibs
 		}
 	}
 
-	/// @brief Constructor of Time class (Copy constructor)
+    /// @brief Constructor of Time class
+    /// @param time time as time_t c-style format
+    Time::Time(const time_t &time) : _time(time) {}
+
+    /// @brief Constructor of Time class (Copy constructor)
 	/// @param time time as Time class object
 	Time::Time(const Time& time)
 	{
 		this->_time = time.GetAsInt();
 	}
 
-	/// @brief Gets time as string
+    /// @brief Empty constructor of Time class, inits _time as localtime
+    Time::Time() : _time(NOW) {}
+
+    /// @brief Gets time as string
 	/// @return time as std::string in format "hh:mm:ss dd:mm:yyyy"
 	std::string Time::GetAsString() const
 	{
@@ -121,4 +128,15 @@ namespace timlibs
 		this->_time = operand.GetAsInt();
 		return *this;
 	}
+
+    /// @brief Constructor of TimeException
+    /// @param description problem as string, ex. "Incorrect format of time"
+    TimeException::TimeException(const std::string &description = "") : problem(description) {}
+    
+	/// @brief Returs description of problem
+	/// @return Description of problem as string
+	std::string TimeException::what() const
+    {
+        return this->problem;
+    }
 }

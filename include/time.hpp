@@ -16,9 +16,9 @@ namespace timlibs
 	{
 	public:
 		Time(const std::string& time);
-		Time(const time_t& time) : _time(time) {};
+		Time(const time_t& time);
 		Time(const Time& time);
-		Time() : _time(NOW) {};
+		Time();
 		std::string GetAsString() const;
 		time_t GetAsInt() const;
 		static bool IsValid(const std::string& time);
@@ -37,8 +37,8 @@ namespace timlibs
 	class TimeException
 	{
 	public:
-		TimeException(const std::string& description = "") : problem(description) {}; // init problem as description
-		std::string what() const { return this->problem; }; // returns what problem is throwed
+		TimeException(const std::string& description); // init problem as description
+		std::string what() const; // returns what problem is throwed
 	private:
 		std::string problem{ "" }; //init problem as empty string
 	};
